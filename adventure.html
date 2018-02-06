@@ -13,7 +13,11 @@
     <script>
         document.write("<h1 style= 'color:blue'>Adventure Game <h1>")
         
-        
+        var inventory = {
+            coin:false,
+            duck:false,
+            pneapple:false,
+        }
         var player = {
             name:"",
             gender:"",
@@ -52,10 +56,6 @@
                        var direction = prompt("you come to a intersection, what do you do? (up/down/left/right/spin/jump)");
                         return direction;
                     }
-                    function maze2(){
-                       var direction = prompt("you come to a intersection, do you go A or B?");
-                        return direction;
-                    }
                     
                                 
                     if (maze() == "up"){
@@ -77,8 +77,10 @@
                                                                                            if (maze() == "down"){
                                                                                                 if (maze() == "jump"){
                                                                                                     alert("you find your way out of the maze!")
-                                                            alert("You find that you came out of the maze 2000 years in the future and are able to have a happy life.")
-                                                            alert("Congradulations! You Win.")
+                                                            alert("You find that you destroyed the mob by accidentaly using the ultimate combo move! ")
+                                                            alert("The Great Wizard Khsdbyagble says Congradulations! you found a gold coin! then he dissapears.")
+                                                            alert("you continue on thinking about how you didnt find a gold coin but he said you did then you suddenly feel a gold coin in your hand and are super confused.")
+                                                                                                    inventory.coin = true;
                                                             
                                                             
                     }
@@ -281,6 +283,10 @@
 //        var again = confirm("do you want to play again?")
 //        if (again){
 //            game();}
+        }
+        function village{
+            var place = prompt("You end up finding your way to a village and you see a house, a store, the dungeon in the pub, and Washington DC. where do you want to go?")
+            if place
         }
     </script>
 </body>
