@@ -16,14 +16,14 @@
         var inventory = {
             coin:false,
             duck:false,
-            pneapple:false,
+            pineapple:false,
         };
         var player = {
             name:"",
             gender:"",
         };
         
-        function name{
+        function name(){
         player.name = prompt("what is your name?");
         player.gender = prompt(player.name+", are you male or female?").toLocaleLowerCase();
         switch(player.gender){
@@ -36,13 +36,13 @@
                 alert (player.gender + " is not a real gender, therefor you do not actualy exist. what a shame i thought you had potential. im dissapointed in you " + player.name );
         }
                      }
+        }
         alert("Good to meet you " + player.name +"!");
         alert("You died!");
         alert("wait... that cant be right...");
         alert("OH! sorry I was on the wrong page.");
         
         game();
-        }
         function mazego(){         
                     if (maze() == "up"){
                         if (maze() == "down"){
@@ -217,7 +217,7 @@
                     mazego();
                 }
         }
-        function east{
+        function east(){
                 var magic = confirm("As you travel east you see the school of magic in the distance, do you continue on the path or do you go to the school of magic. (ok for magic, cancel to continue)");
                 if (magic == true && player.gender == "female"){
                     alert("you train in the ways of Magic for 5 months 7 days 1 hour 2 minutes and 3.1415 seconds before the mob finds you.");
@@ -250,9 +250,7 @@
                     death();
                 }
                 break;
-            default:
-                alert("You died because " + a + " is not a real direction!");
-                death();
+            
                  }
         function game() {
         var a = prompt("You're running away from the mob so you travel south across the land when you find the road splits, do you take the north, south, east, or west path?").toLocaleLowerCase();
@@ -269,6 +267,10 @@
                 death();
                 break;
                 case "east":
+                east();
+                default:
+                alert("You died because " + a + " is not a real direction!");
+                death();
                 
         }
         }
@@ -290,12 +292,48 @@
 //        if (again){
 //            game();}
         }
-        function village{
-            var place = prompt("You end up finding your way to a village and you see a house, a store, the dungeon in the pub, and Washington DC. where do you want to go?")
-            if (place == house){
-                
+        function village(){
+            var place = prompt("You end up finding your way to a village and you see a house, a store, the dungeon in the pub, and Washington DC. where do you want to go?").toLocaleLowerCase
+            if (place == house && inventory.duck == false){
+                alert("you walk up to the house and knock but nobody answers so you break in and look around. as your looking around you find a light on in a room, as you walk into the room you think that maybe you shouldnt be randomly going into rooms in houses you broke into but you figure you might as well go in.")
+                alert("You walk into the room and find a young girl taking a bath... pervert... anyway you steal her rubber duck and run out of the house as she screams about an intruder.") 
+                inventory.duck = true;
+                village(); 
             }
-            
+            else if (place == house){
+                alert("you go back to the house and find the cops there talking to the young girl that you saw naked in the bathroom. as you walk closer she sees you and points you out so the cops arrest you and you end up in the dungeon in the pub.")
+            }
+            else if(place == "washington" || "washington dc" || "dc" ){
+                alert("on your way to washington dc you find yourself somehow in the middle of the bermuta triangle where you get torn apart by the Kraken")
+            death();
+            }
+            else if(place == store && inventory.pineapple == false){
+                alert("as you walk around the store you find a pineapple that you just really want for no reason so you buy it from the guy at the cost of a gold coin... lucky you got one of those from that wizard guy!") 
+                inventory.pineapple = true;
+                alert("as you leave the store you feel a gold coin in your hand.")
+                village();
+            }
+            else if(place == store){
+                alert("you go to the store and you see the cops there talking to the owner of the store. he sees you and points you out to the cops who tackle you and send you to the dungeon in the pub.")
+            }
+            else if(place == "dungeon" || "pub" || "dungeon in the pub"){
+                dungeon();
+            }
+        }
+        function dungeon(){
+            if (inventory.duck == true && inventory.pineapple == true){
+                alert("you get stuck in the dungeon.")
+                alert("after being in the dungeon for a while your golden coin starts to grow and spin until it turns into a portal! A voice comes out of the portal asking for yellow stuff. you give it the pineapple you stole from the store and the rubber duck you stole from the girl. It accepts the offerings and teleports you home where you are able to live a hapy rest of your life.") 
+                win();
+            }
+            else if (inventory.duck == true || inventory.pineapple == true){
+                alert("you spend the rest of your days in the dungeon.")
+                death();
+            }
+            else{
+                alert("you look around and think its kinda cool.")
+                village();
+            }
         }
     </script>
 </body>
